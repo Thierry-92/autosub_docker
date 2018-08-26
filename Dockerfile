@@ -5,7 +5,7 @@ RUN apt update
 RUN apt install -y git
 
 RUN git clone https://github.com/BenjV/autosub.git /app/autosub
-RUN pip install cheetah
+RUN pip install Cheetah3
 
 RUN apt clean -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
