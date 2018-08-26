@@ -13,4 +13,4 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 9960
 WORKDIR /app/autosub
 
-CMD ["python2", "AutoSub.py"]
+CMD ["python3", "AutoSub.py"]
