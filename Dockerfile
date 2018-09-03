@@ -1,16 +1,15 @@
-FROM jfloff/alpine-python:3.6-slim
+FROM jfloff/alpine-python:2.7-slim
 MAINTAINER T-Ri
 
-RUN apt update 
-RUN apt install -y git
+ADD https://github.com/BenjV/autosub/archive/master.zip /opt/
+WORKDIR /opt/
 
-RUN git clone https://github.com/BenjV/autosub.git /app/autosub
-RUN pip install Cheetah3
+RUN apk update 
+RUN unzip master.zip
+RUN pip install cheetah six
 
-RUN apt clean -y
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+RUN rm -rf /opt/master.zip
 EXPOSE 9960
-WORKDIR /app/autosub
+WORKDIR /opt/autosub-master/
 
-CMD ["python3", "AutoSub.py"]
+CMD ["python", "-c /config", "AutoSub.py"]
